@@ -34,7 +34,7 @@ else $page_id = get_the_ID();
 	$title_class=$portfolio_options['sections-title-class']; 
 	$breadcrumbs_class=$portfolio_options['sections-breadcrumbs-class']; 
 	?>
-	<header id="main-header" class="<?php echo $header_class?>">
+	<header id="main-header" class="<?php if(@$portfolio_options['sections-header-background-type'] == 1) echo @$portfolio_options['sections-header-background'] . ' ';?><?php if(@$portfolio_options['sections-header-color-type'] == 1) echo @$portfolio_options['sections-header-color'];?> <?php echo $header_class?>">
 		<div class="content-wrap">
 			<div class="container">
 				<nav class="navbar navbar-expand-md navbar-light navbar-custom-bg">			
