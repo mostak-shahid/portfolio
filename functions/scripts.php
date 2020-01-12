@@ -3,8 +3,11 @@
 function portfolio_enqueue_scripts() {
 	global $portfolio_options;
 	wp_enqueue_script( 'jquery' );	
-	wp_register_style( 'google-font', 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Oxygen:300,400,700' );
-	wp_enqueue_style( 'google-font' );
+	wp_register_style( 'roboto.min', get_template_directory_uri() . '/fonts/Roboto/css/roboto.min.css' );
+	wp_enqueue_style( 'roboto.min' );
+	wp_register_style( 'montserrat.min', get_template_directory_uri() . '/fonts/Montserrat/css/montserrat.min.css' );
+	wp_enqueue_style( 'montserrat.min' );
+	
 	wp_register_style( 'font-awesome.min', get_template_directory_uri() . '/fonts/font-awesome-4.7.0/css/font-awesome.min.css' );
 	wp_enqueue_style( 'font-awesome.min' );
 
@@ -37,6 +40,14 @@ function portfolio_enqueue_scripts() {
 
 	wp_register_script('jquery.lazy.min', get_template_directory_uri() . '/plugins/jquery.lazy-master/jquery.lazy.min.js', 'jquery');
 	wp_enqueue_script( 'jquery.lazy.min' );
+
+	wp_register_script('jquery.typewriter', get_template_directory_uri() . '/plugins/type/jquery.typewriter.js', 'jquery');
+	wp_enqueue_script( 'jquery.typewriter' );
+
+	wp_register_script('waypoints.min', get_template_directory_uri() . '/plugins/jquery.counterup/waypoints.min.js', 'jquery');
+	wp_enqueue_script( 'waypoints.min' );
+	wp_register_script('jquery.counterup.min', get_template_directory_uri() . '/plugins/jquery.counterup/jquery.counterup.min.js', 'jquery');
+	wp_enqueue_script( 'jquery.counterup.min' );
 
 	wp_register_script('jPages.min', get_template_directory_uri() . '/plugins/jPages/jPages.min.js', 'jquery');
 	wp_enqueue_script( 'jPages.min' );

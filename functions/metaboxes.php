@@ -259,5 +259,63 @@ function portfolio_metaboxes() {
         // ),
         'preview_size' => 'large', // Image size to use when previewing in the admin.
     ));
+
+    $work_details = new_cmb2_box(array(
+        'id' => $prefix . 'work_details',
+        'title' => __('Settings', 'cmb2'),
+        'object_types' => array('work'),
+    ));
+    $work_details->add_field(array(
+        'name' => 'Website',
+        'id' => $prefix . 'work_website',
+        'type' => 'text_url'
+    ));
+    $work_details->add_field(array(
+        'name' => 'Gallery Images',
+        'desc' => '',
+        'id'   => $prefix.'work_gallery_images',
+        'type' => 'file_list'
+    ));
+    $work_details->add_field( array(
+        'name' => 'Featured Work',
+        'desc' => 'Do you like to show on home page?',
+        'id'   => $prefix.'featured_work',
+        'type' => 'checkbox',
+    ));
+    
+
+    $testimonial_details = new_cmb2_box(array(
+        'id' => $prefix . 'testimonial_details',
+        'title' => __('Testimonial Details', 'cmb2'),
+        'object_types' => array('testimonial'),
+    ));
+    $testimonial_details->add_field(array(
+        'name' => 'Designation',
+        'desc' => __( 'Designation of the author.', 'cmb2' ),
+        'id' => $prefix . 'testimonial_designation',
+        'type' => 'text'
+    ));
+    $testimonial_details->add_field(array(
+        'name' => 'Website',
+        'desc' => __( 'URL of the author.', 'cmb2' ),
+        'id' => $prefix . 'testimonial_url',
+        'type' => 'text'
+    ));
+
+    $testimonial_details->add_field(array(
+        'name' => 'Cover Image',
+        'desc' => __( 'Cover image of oEmbed.', 'cmb2' ),
+        'id' => $prefix . 'testimonial_image',
+        'type' => 'file',
+        'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
+        'query_args' => array( 'type' => 'image' ), // Only images attachment
+    ));
+
+    $testimonial_details->add_field(array(
+        'name' => 'oEmbed',
+        'desc' => __( 'Enter a youtube, twitter, or instagram URL.', 'cmb2' ),
+        'id'   => $prefix . 'testimonial_oembed',
+        'type' => 'oembed',
+    ));
 }
 add_action('cmb2_admin_init', 'portfolio_metaboxes');

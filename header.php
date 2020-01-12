@@ -37,20 +37,10 @@ else $page_id = get_the_ID();
 	<header id="main-header" class="<?php if(@$portfolio_options['sections-header-background-type'] == 1) echo @$portfolio_options['sections-header-background'] . ' ';?><?php if(@$portfolio_options['sections-header-color-type'] == 1) echo @$portfolio_options['sections-header-color'];?> <?php echo $header_class?>">
 		<div class="content-wrap">
 			<div class="container">
-				<nav class="navbar navbar-expand-md navbar-light navbar-custom-bg">			
+				<nav class="navbar navbar-expand-lg navbar-dark navbar-custom-bg">			
 					<a class="navbar-brand" href="<?php echo home_url(); ?>">
-						<span class="<?php if($portfolio_options['logo']['id']) echo 'd-md-none';?>">
-						<?php if (has_site_icon()) : ?>
-							<img class="img-responsive img-fluid" src="<?php echo get_site_icon_url(32)?>" width="32" height="32" alt="<?php echo bloginfo( 'name' ); ?> - Logo">
-						<?php else : ?>
-							<?php echo bloginfo( 'name' ); ?>
-						<?php endif; ?>
-						</span>
-						<?php if($portfolio_options['logo']['id']) : ?>
-							<span class="d-none d-md-inline-block">
-								<img class="img-responsive img-fluid" src="<?php echo $portfolio_options['logo']['url']?>" width="<?php echo $portfolio_options['logo']['width']?>" height="<?php echo $portfolio_options['logo']['height']?>" alt="<?php echo bloginfo( 'name' ); ?> - Logo">
-							</span>
-						<?php endif ?>
+						<img class="img-responsive img-fluid img-logo" src="<?php echo aq_resize($portfolio_options['logo']['url'],44,44,true)?>" width="44" height="44" alt="<?php echo bloginfo( 'name' ); ?> - Logo">
+						
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
