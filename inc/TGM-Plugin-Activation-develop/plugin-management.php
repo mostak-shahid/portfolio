@@ -175,6 +175,12 @@ function portfolio_plugins_management() {
 			'required'			=> false,
 			'force_activation'	=> false, 
 		),
+		array(
+			'name'				=> 'WP-Live Chat by 3CX', 
+			'slug'				=> 'wp-live-chat-support',  
+			'required'			=> false,
+			'force_activation'	=> false, 
+		),
 
 		// This is an example of how to include a plugin from a GitHub repository in your theme.
 		// This presumes that the plugin code is based in the root of the GitHub repository

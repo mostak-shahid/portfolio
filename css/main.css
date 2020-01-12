@@ -18,7 +18,9 @@ a:visited,a:hover,a:active,a:focus{text-decoration:none}
 .sub-menu{top:100%;left:0;z-index:1000;display:none;float:left;min-width:10rem;padding:0;margin:.125rem 0 0;font-size:1rem;color:#212529;text-align:left;list-style:none;background-color:#fff;background-clip:padding-box;border:1px solid rgba(0,0,0,.15);border-radius:.25rem} 
 #main-header,header,section,footer,#footer{position:relative}
 #section-banner .wrapper img{width:100%;height:auto}
-#page-title {background-position:center center; background-repeat:no-repeat; background-size:cover;overflow:hidden;text-align:center}
+#section-banner .static-banner .banner-text, #section-banner .owl-carousel .active .banner-text {-webkit-animation-name: fadeInLeftBig; -webkit-animation-duration: 1s; -webkit-animation-iteration-count: 1; animation-name: fadeInLeftBig; animation-duration: 1s; animation-iteration-count: 1; }
+#section-banner .static-banner .img-banner, #section-banner .owl-carousel .active .img-banner {-webkit-animation-name: fadeInRightBig; -webkit-animation-duration: 1s; -webkit-animation-iteration-count: 1; animation-name: fadeInRightBig; animation-duration: 1s; animation-iteration-count: 1; }
+#page-title {overflow:hidden;text-align:center}
 #page-title .content-wrap{position: relative;}
 #page-title .shortcode-output,#page-title .video-output {position:absolute;left:0;top:0;width:100%;height:100%}
 #page-title .video-output video {width:100%}

@@ -44,10 +44,10 @@ if (!class_exists('ReduxFramework_mos_address')) {
                     'title' => true,
                     'description' => true,
                     'map_link' => true,
+                    'embeded_link' => true,
                     'review_link' => true,
                     'review_link_img' => true,
                     'review_link_img_h' => true,
-                    'target' => true,
                 ),
                 'content_title' => __ ( 'Address', 'portfolio' )
             );
@@ -79,8 +79,8 @@ if (!class_exists('ReduxFramework_mos_address')) {
                         'width' => '',
                         'thumb' => '',
                         'description' => '',
-                        'target' => '',
                         'map_link' => '',
+                        'embeded_link' => '',
                         'review_link' => '',
                         'review_link_img' => '',
                         'review_link_img_h' => '',
@@ -131,6 +131,9 @@ if (!class_exists('ReduxFramework_mos_address')) {
                     if ( $this->field[ 'show' ][ 'map_link' ] ) {
                         echo '<li><input type="text" id="' . esc_attr( $this->field['id'] ) . '-map_link_' . esc_attr( $x ) . '" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][map_link]" value="' . esc_attr($slide['map_link']) . '" placeholder="'.esc_attr__('Map link', 'portfolio').'" class="full-text" /></li>';
                     }
+                    if ( $this->field[ 'show' ][ 'embeded_link' ] ) {
+                        echo '<li><input type="text" id="' . esc_attr( $this->field['id'] ) . '-embeded_link_' . esc_attr( $x ) . '" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][embeded_link]" value="' . esc_attr($slide['embeded_link']) . '" placeholder="'.esc_attr__('Embeded Map link', 'portfolio').'" class="full-text" /></li>';
+                    }
                     if ( $this->field[ 'show' ][ 'review_link' ] ) {
                         echo '<li><input type="text" id="' . esc_attr( $this->field['id'] ) . '-review_link_' . esc_attr( $x ) . '" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][review_link]" value="' . esc_attr($slide['review_link']) . '" class="full-text" placeholder="'.esc_html__('Review Link', 'portfolio').'" /></li>';
                     }
@@ -139,11 +142,6 @@ if (!class_exists('ReduxFramework_mos_address')) {
                     }
                     if ( $this->field[ 'show' ][ 'review_link_img_h' ] ) {
                         echo '<li><input type="text" id="' . esc_attr( $this->field['id'] ) . '-review_link_img_h_' . esc_attr( $x ) . '" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][review_link_img_h]" value="' . esc_attr($slide['review_link_img_h']) . '" class="full-text" placeholder="'.esc_html__('Review Link Hover Image', 'portfolio').'" /></li>';
-                    }
-                    if ( $this->field[ 'show' ][ 'target' ] ) {
-                        echo '<li><label for="'. esc_attr( $this->field['id'] ) .  '-target_' . esc_attr( $x ) . '" class="icon-link_title-target">';
-                        echo '<input type="checkbox" class="checkbox-slide-target" id="' . esc_attr( $this->field['id'] ) . '-target_' . esc_attr( $x ) . '" value="1" ' . checked(  $slide['target'], '1', false ) . ' name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][target]" />';
-                        echo ' '.esc_html__('Open Link in New Tab/Window', 'portfolio'). '</label></li>';
                     }
 
                     echo '<li><input type="hidden" class="slide-sort" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][sort]" id="' . esc_attr( $this->field['id'] ) . '-sort_' . esc_attr( $x ) . '" value="' . esc_attr( $slide['sort'] ) . '" />';
@@ -192,6 +190,10 @@ if (!class_exists('ReduxFramework_mos_address')) {
                     $placeholder = (isset($this->field['placeholder']['map_link'])) ? esc_attr($this->field['placeholder']['map_link']) : __( 'Map link', 'portfolio' );
                     echo '<li><input type="text" id="' . esc_attr( $this->field['id'] ) . '-map_link_' . esc_attr( $x ) . '" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][map_link]" value="" placeholder="'.esc_attr( $placeholder ).'" class="full-text" /></li>';   
                 }
+                if ( $this->field[ 'show' ][ 'embeded_link' ] ) {
+                    $placeholder = (isset($this->field['placeholder']['embeded_link'])) ? esc_attr($this->field['placeholder']['embeded_link']) : __( 'Embeded Map link', 'portfolio' );
+                    echo '<li><input type="text" id="' . esc_attr( $this->field['id'] ) . '-embeded_link_' . esc_attr( $x ) . '" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][embeded_link]" value="" placeholder="'.esc_attr( $placeholder ).'" class="full-text" /></li>';   
+                }
                 if ( $this->field[ 'show' ][ 'review_link' ] ) {             
                     $placeholder = (isset($this->field['placeholder']['review_link'])) ? esc_attr($this->field['placeholder']['review_link']) : __( 'Review Link', 'portfolio' );
                     echo '<li><input type="text" id="' . esc_attr( $this->field['id'] ) . '-review_link_' . esc_attr( $x ) . '" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][review_link]" value="" class="full-text" placeholder="'.esc_attr( $placeholder ).'" /></li>';
@@ -203,11 +205,6 @@ if (!class_exists('ReduxFramework_mos_address')) {
                 if ( $this->field[ 'show' ][ 'review_link_img_h' ] ) {             
                     $placeholder = (isset($this->field['placeholder']['review_link_img_h'])) ? esc_attr($this->field['placeholder']['review_link_img_h']) : __( 'Review Link Hover Image', 'portfolio' );
                     echo '<li><input type="text" id="' . esc_attr( $this->field['id'] ) . '-review_link_img_h_' . esc_attr( $x ) . '" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][review_link_img_h]" value="" class="full-text" placeholder="'.esc_attr( $placeholder ).'" /></li>';
-                }
-                if ( $this->field[ 'show' ][ 'target' ] ) {
-                    echo '<li><label for="'. esc_attr( $this->field['id'] ) .  '-target_' . esc_attr( $x ) . '">';
-                    echo '<input type="checkbox" class="checkbox-slide-target" id="' . esc_attr( $this->field['id'] ) . '-target_' . esc_attr( $x ) . '" value="" ' . checked(  '', '1', false ) . ' name="' . esc_attr( $this->args['opt_name'] ) . '[' . esc_attr( $this->field['id'] ) . '][' . esc_attr( $x ) . '][target]" />';
-                    echo ' '.esc_html__('Open Link in New Tab/Window', 'portfolio'). '</label></li>';
                 }
 
                 echo '<li><input type="hidden" class="slide-sort" name="' . esc_attr( $this->field['name'] ) . '[' . esc_attr( $x ) . '][sort]" id="' . esc_attr( $this->field['id'] ) . '-sort_' . esc_attr( $x ) . '" value="' . esc_attr( $x ) . '" />';

@@ -17,19 +17,30 @@ function shortcodes_page(){
 	<div class="wrap">
 		<h1>Theme Short Codes</h1>
 		<ol>
+			<li>[home-url slug''] <span class="sdetagils">displays home url</span></li>
 			<li>[site-identity class='' container_class=''] <span class="sdetagils">displays site identity according to theme option</span></li>
 			<li>[site-name link='0'] <span class="sdetagils">displays site name with/without site url</span></li>
 			<li>[copyright-symbol] <span class="sdetagils">displays copyright symbol</span></li>
 			<li>[this-year] <span class="sdetagils">displays 4 digit current year</span></li>
-			<li>[email offset=0 index=0 all=1 seperator=', '] <span class="sdetagils">displays email from theme option</span></li>
 			<li>[phone offset=0 index=0 all=1 seperator=', '] <span class="sdetagils">displays phone from theme option</span></li>
 			<li>[fax offset=0 index=0 all=1 seperator=', '] <span class="sdetagils">displays fax from theme option</span></li>
+			<li>[email offset=0 index=0 all=1 seperator=', '] <span class="sdetagils">displays email from theme option</span></li>
+			<li>[buseness-hour] <span class="sdetagils">displays Business Hours from theme option</span></li>
+			<li>[address offset=0 index=0 all=1 seperator=', '] <span class="sdetagils">displays address from theme option</span></li>
 			<li>[social-menu display='inline/block' title='0/1'] <span class="sdetagils">displays social media from theme option</span></li>		
 			<li>[feature-image wrapper_element='div' wrapper_atts='' height='' width=''] <span class="sdetagils">displays feature image</span></li>		
 		</ol>
 	</div>
 	<?php
 }
+function home_url_func( $atts = array(), $content = '' ) {
+	$atts = shortcode_atts( array(
+		'slug' => '',
+	), $atts, 'home-url' );
+
+	return home_url( $atts['slug'] );
+}
+add_shortcode( 'home-url', 'home_url_func' );
 function site_identity_func( $atts = array(), $content = null ) {
 	global $portfolio_options;
 	$logo_url = ($portfolio_options['logo']['url']) ? $portfolio_options['logo']['url'] : get_template_directory_uri(). '/images/logo.png';
@@ -194,6 +205,19 @@ function fax_func( $atts = array(), $content = '' ) {
 	return $output;
 }
 add_shortcode( 'fax', 'fax_func' );
+function business_hour_func( $atts = array(), $content = '' ) {
+	$html = '';
+	global $portfolio_options;
+	$contact_hours = $portfolio_options['contact-hour'];
+	if ($contact_hours){
+		$html .= '<ul class="business-houes">';
+		foreach ($contact_hours as $contact_hour) {
+			$html .= '<li>' . $contact_hour . '</li>';
+		}
+		$html .= '</ul>';
+	}
+	return $html;
+}
 function address_func( $atts = array(), $content = '' ) {
     global $portfolio_options;
     $html = '';

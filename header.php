@@ -73,7 +73,7 @@ else $page_id = get_the_ID();
 			</div>
 		</div>
 	</header>
-	<?php if (get_post_meta($page_id, '_portfolio_banner_enable', true )) : ?>
+	<?php if (get_post_meta($page_id, '_portfolio_banner_enable', true ) OR is_404()) : ?>
 		<?php 
 		$banner_img = get_post_meta( get_the_ID(), '_portfolio_banner_cover', true ); 
 		$banner_mp4 = get_post_meta( get_the_ID(), '_portfolio_banner_mp4', true ); 
