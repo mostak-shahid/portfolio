@@ -4,6 +4,22 @@ function mos_home_url_replace($data) {
     $replace_br = str_replace('{{home_url}}', home_url(), $replace_fnc);
     return $replace_br;
 }
+function mos_post_details($type='post'){
+    $output = array();
+    $args = array(
+        'post_type' => $type,
+        'posts_per_page' => -1,
+    );
+    $query = new WP_Query( $args );     
+    if ( $query->have_posts() ) :
+        while ( $query->have_posts() ) : $query->the_post();
+            $output[get_the_ID()] = get_the_title();
+        endwhile;
+    endif;
+    wp_reset_postdata();    
+    return $output;
+}
+
 /*Variables*/
 $template_parts = array(
     'Enabled'  => array(

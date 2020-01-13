@@ -39,7 +39,7 @@ else $page_id = get_the_ID();
 			<div class="container">
 				<nav class="navbar navbar-expand-lg navbar-dark navbar-custom-bg">			
 					<a class="navbar-brand" href="<?php echo home_url(); ?>">
-						<img class="img-responsive img-fluid img-logo" src="<?php echo aq_resize($portfolio_options['logo']['url'],44,44,true)?>" width="44" height="44" alt="<?php echo bloginfo( 'name' ); ?> - Logo">
+						<img class="img-responsive img-fluid img-logo" src="<?php echo aq_resize($portfolio_options['logo']['url'],44,44,true)?>" width="44" height="44" alt="<?php echo bloginfo( 'name' ); ?> - Logo"> <span class="logo-text">Portfolio</span>
 						
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">

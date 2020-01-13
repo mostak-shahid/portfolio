@@ -7,7 +7,10 @@ $page_details = array( 'id' => get_the_ID(), 'template_file' => basename( get_pa
   <footer id="footer" class="<?php if(@$portfolio_options['sections-footer-background-type'] == 1) echo @$portfolio_options['sections-footer-background'] . ' ';?><?php if(@$portfolio_options['sections-footer-color-type'] == 1) echo @$portfolio_options['sections-footer-color'];?> <?php echo $class ?>">
     <div class="content-wrap">
       <div class="container">
-        <?php echo do_shortcode( $portfolio_options['sections-footer-content'] ); ?>
+        <div class="text-center">
+          <?php echo do_shortcode( "[social-menu display='inline' title='1']" ); ?>
+          <?php echo do_shortcode( $portfolio_options['sections-footer-content'] ); ?>
+        </div>
       </div>
     </div>
   </footer>
