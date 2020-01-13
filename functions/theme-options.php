@@ -1969,7 +1969,6 @@
             ),
         )
     ) ); 
-
     //Testimonial
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Testimonial', 'redux-framework-demo' ),
@@ -2141,8 +2140,7 @@
                 'background-color' => false
             ),
         )
-    ) ); 
-
+    ) );
     //Contact
     Redux::setSection( $opt_name, array(
         'title'            => __( 'Contact', 'redux-framework-demo' ),

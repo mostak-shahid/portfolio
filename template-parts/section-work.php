@@ -60,6 +60,9 @@ do_action( 'action_avobe_work', $page_details );
 						</div>
 					<?php endforeach; ?>
 					</div>
+					<?php if ($link['text_field_1'] AND $link['text_field_2']) ?>
+					<div class="row justify-content-center"><div class="col-lg-4"><a href="<?php echo esc_url(do_shortcode($link['text_field_2'])); ?>" class="btn btn-block btn-portfolio"><?php echo do_shortcode( $link['text_field_1'] ); ?></a></div></div>
+					</div>
 				<?php endif; ?>
 		<?php do_action( 'action_after_work', $page_details ); ?>
 		</div>	
