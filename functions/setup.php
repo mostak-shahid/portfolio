@@ -19,6 +19,7 @@ if ( ! function_exists( 'portfolio_setup' ) ) :
 		register_nav_menus( array(
 			'mainmenu' => __('Main Menu', 'portfolio'),
 			'mobilemenu' => __('Mobile Menu', 'portfolio'),
+			'innermenu' => __('Inner Menu', 'mosacademy'),
 		));
 		add_theme_support( 'html5', array(
 			'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'

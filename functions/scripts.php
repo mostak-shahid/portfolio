@@ -1,5 +1,4 @@
 <?php
-
 function portfolio_enqueue_scripts() {
 	global $portfolio_options;
 	wp_enqueue_script( 'jquery' );	
@@ -51,6 +50,9 @@ function portfolio_enqueue_scripts() {
 
 	wp_register_script('jPages.min', get_template_directory_uri() . '/plugins/jPages/jPages.min.js', 'jquery');
 	wp_enqueue_script( 'jPages.min' );
+
+	wp_register_script('isotope.pkgd.min', get_template_directory_uri() . '/plugins/isotope/isotope.pkgd.min.js', 'jquery');
+	wp_enqueue_script( 'isotope.pkgd.min' );
 	
 
 

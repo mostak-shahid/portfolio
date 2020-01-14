@@ -3,6 +3,7 @@ global $portfolio_options;
 $class = $portfolio_options['sections-testimonial-class'];
 $title = $portfolio_options['sections-testimonial-title'];
 $content = $portfolio_options['sections-testimonial-content'];
+$shortcode = $portfolio_options['sections-testimonial-shortcode'];
 $page_details = array( 'id' => get_the_ID(), 'template_file' => basename( get_page_template() ));
 do_action( 'action_avobe_testimonial', $page_details ); 
 ?>
@@ -17,6 +18,9 @@ do_action( 'action_avobe_testimonial', $page_details );
 				<?php endif; ?>
 				<?php if ($content) : ?>				
 					<div class="content-wrapper wow fadeInUp"><?php echo do_shortcode( $content ) ?></div>
+				<?php endif; ?>
+				<?php if ($shortcode) : ?>				
+					<div class="shortcode-wrapper text-center wow fadeInUp"><?php echo do_shortcode( $shortcode ) ?></div>
 				<?php endif; ?>
 		<?php do_action( 'action_after_testimonial', $page_details ); ?>
 		</div>	

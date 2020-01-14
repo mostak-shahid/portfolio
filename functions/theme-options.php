@@ -2043,6 +2043,13 @@
                     //'tinymce' => array(),
                     //'quicktags'     => false,
                 )
+            ),            
+            array(
+                'id'       => 'sections-testimonial-shortcode',
+                'type'     => 'text',
+                'title'    => __( 'Section CSS Class', 'redux-framework-demo' ),
+                'desc'     => 'You can add additional css class here.',
+                'validate'     => 'no_html',
             ),
             array(
                 'id'       => 'sections-testimonial-color-type',

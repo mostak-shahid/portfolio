@@ -360,3 +360,67 @@ function theme_credit_func( $atts = array(), $content = '' ) {
 	return $html = '<a href="'.$atts["url"].'" target="_blank" class="theme-credit">'.$atts["name"].'</a>';
 }
 add_shortcode( 'theme-credit', 'theme_credit_func' );
+
+function portfolio_func( $atts = array(), $content = '' ) {
+	$html = "";
+	$atts = shortcode_atts( array(
+		'nav' => false,
+	), $atts, 'portfolio' );
+	$terms = mos_get_terms ("work-category");
+	if ($terms AND $atts['nav']) :
+		$html .= '<ul class="portfolio-filter text-center">';
+			$html .= '<li><a class="btn btn-default active" href="#" data-filter="*">All Works</a></li>';
+			foreach ($terms as $term) :
+				$html .= '<li><a class="btn btn-default" href="#" data-filter=".'.$term["slug"].'">'.$term["name"].'</a></li>';
+			endforeach;
+		$html .= '</ul>';
+	endif;
+	$args = array(
+	    'post_type' => 'work',
+	    'posts_per_page' => -1
+	);
+	$query = new WP_Query( $args );
+	if ( $query->have_posts() ) :
+		$html .= '<div class="row portfolio-items">';
+		while ( $query->have_posts() ) : $query->the_post();
+			$post_id = get_the_ID();
+		    $class = ''; 
+	        $term_list = get_the_terms($post_id, 'work-category');
+	        // var_dump($term_list);
+	        if(@$term_list){
+		        foreach($term_list as $term_single) {
+		            $class .= $term_single->slug . ' ';
+		        }
+		    }
+		    $html .= '<div class="portfolio-item col col-md-4 col-lg-3 single-work'.$class.'">';
+
+				$html .= '<div class="recent-work-wrap h-100">';
+	                $html .= '<img class="img-responsive" src="'.aq_resize(get_the_post_thumbnail_url($post_id), 290, 179,true).'" width="290" height="179" alt="'.get_the_title($post_id).'">';
+	                $html .= '<h4 class="project-title text-center">'.get_the_title($post_id).'</h4>';
+	                $html .= '<div class="overlay">';
+	                    $html .= '<div class="recent-work-inner">';
+	                        $html .= '<a class="preview" data-fancybox="gallery-'.$post_id.'" data-caption="'.get_the_title($post_id).'" href="'.get_the_post_thumbnail_url($post_id).'"><i class="fa fa-plus"></i></a>';
+	                    	if (get_post_meta( $post_id, '_portfolio_work_website', true )) :
+	                        $html .= '<a class="preview" href="'.get_post_meta( $post_id, '_portfolio_work_website', true ).'" target="_blank"><i class="fa fa-chain"></i></a>';
+	                    	endif;
+	                    $html .= '</div>';
+	                $html .= '</div>';
+	            $html .= '</div>';
+	            $html .= '<div class="hidden">';                
+                $images = get_post_meta( $post_id, '_portfolio_work_gallery_images', true );
+                if($images) :
+                	foreach ($images as $attachment_id => $url) : 
+                	$html .= '<a data-fancybox="gallery-'.$post_id.'" data-caption="'.get_the_title($post_id).'" href="'.wp_get_attachment_url( $attachment_id ).'"></a>';
+                	endforeach;
+                endif;
+                $html .= '</div>';
+
+			$html .= '</div>';
+		endwhile;
+		wp_reset_postdata();
+		$html .= '</div>';
+	endif;
+	return $html;
+}
+add_shortcode( 'portfolio', 'portfolio_func' );
+

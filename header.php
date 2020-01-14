@@ -46,9 +46,11 @@ else $page_id = get_the_ID();
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<?php
+					if (is_front_page()) $menu = 'mainmenu';
+					else $menu = 'innermenu';
 					wp_nav_menu([
-						'menu'            => 'mainmenu',
-						'theme_location'  => 'mainmenu',
+						'menu'            => $menu,
+						'theme_location'  => $menu,
 						'container'       => 'div',
 						'container_id'    => 'collapsibleNavbar',
 						'container_class' => 'collapse navbar-collapse',

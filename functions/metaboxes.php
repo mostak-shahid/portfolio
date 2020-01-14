@@ -11,7 +11,7 @@ function portfolio_metaboxes() {
         $enabled = ($portfolio_options['general-page-sections']['Enabled']) ? $portfolio_options['general-page-sections']['Enabled'] : $template_parts['Enabled'];
         $disabled = ($portfolio_options['general-page-sections']['Disabled']) ? $portfolio_options['general-page-sections']['Disabled'] : $template_parts['Disabled'];
     }
-
+    // var_dump($enabled);
     $page_settings = new_cmb2_box(array(
         'id' => $prefix . 'page_settings',
         'title' => __('Page Settings', 'cmb2'),
@@ -275,12 +275,6 @@ function portfolio_metaboxes() {
         'desc' => '',
         'id'   => $prefix.'work_gallery_images',
         'type' => 'file_list'
-    ));
-    $work_details->add_field( array(
-        'name' => 'Featured Work',
-        'desc' => 'Do you like to show on home page?',
-        'id'   => $prefix.'featured_work',
-        'type' => 'checkbox',
     ));
     
 
